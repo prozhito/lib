@@ -1,0 +1,133 @@
+.menu__desktop {
+    position: relative;
+    min-width: 345px;
+    list-style-type: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__item {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: var(--black-100);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.menu__link {
+    text-decoration: none;
+    color: var(--black-100);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.menu__link:hover {
+    border-bottom: 1px solid var(--black-100);
+    margin-bottom: -1px;
+}
+
+.menu__dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    height: 38px;
+    display: none;
+    opacity: 0;
+    padding: 8px 10px 0;
+    grid-auto-flow: column;
+    /*grid-auto-columns: minmax(120px, 1fr);*/
+    /*grid-auto-columns: 280px;*/
+    gap: 30px;
+    justify-items: center;
+    transition: all 0.3s linear;
+    z-index: 1;
+}
+
+/* хак для "студенческой практики */
+.menu__item:nth-last-child(1) .menu__dropdown li:nth-last-child(1) {
+    width: 222px;
+}
+
+.menu__dropdown:last-of-type {
+    padding-right: 0;
+}
+
+.menu__item:hover .menu__dropdown {
+    display: grid;
+    opacity: 1;
+}
+
+.menu__mobileContainer {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    background: var(--bg-orange-light);
+    top: 50px;
+    left: 0;
+    width: 100%;
+    transition: height 0.5s ease-in-out;
+}
+
+.menu__mobileContainer_open {
+    height: calc(100vh - 50px);
+}
+
+.menu__mobile {
+    display: flex;
+    flex-direction: column;
+    margin: 24px 12px;
+    padding: 0;
+    width: calc(100% - 24px);
+}
+
+.menu__mobile_secondLevel {
+    margin: 24px 12px;
+    column-width: 48%;
+    column-count: 2;
+    column-gap: 4%;
+    border-bottom: 1px solid var(--logo-gray);
+}
+
+.menu__mobile {
+    border-bottom: 1px solid var(--logo-gray);
+}
+
+@media screen and (max-width: 1023px) {
+    .menu__desktop {
+        min-width: 284px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .menu__desktop {
+        display: none;
+    }
+
+    .menu__item {
+        padding: 0;
+        height: fit-content;
+    }
+
+    .menu__item:not(:last-of-type) {
+        margin-bottom: 28px;
+        margin-right: 0;
+    }
+
+    .menu__item:last-of-type {
+        padding-bottom: 24px;
+    }
+
+    .menu__link {
+        padding: 0;
+    }
+}
