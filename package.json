@@ -33,7 +33,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "react": "^18.2.0",
     "swr": "^2.2.4"
   },
   "peerDependencies": {
@@ -44,6 +43,6 @@
   },
   "homepage": "https://github.com/prozhito/lib#readme",
   "publishConfig": {
-    "@mrhoft:registry": "https://npm.pkg.github.com"
+    "@prozhito:registry": "https://npm.pkg.github.com"
   }
 }
