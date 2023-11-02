@@ -6,7 +6,7 @@
     "jsx": "react",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "types",
+    "declarationDir": "@types",
     "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
@@ -15,10 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "lib": ["es5", "dom", "es2015"]
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "src/**/*.test.tsx",
-    "src/**/*.stories.tsx"
-  ]
+  "include": ["src"],
+  "exclude": ["dist", "node_modules", "src/**/*.test.tsx"]
 }

@@ -2,7 +2,7 @@
 
 ## Installation:
 
-`npm install git@github.com:prozhito/lib.git --save`
+`npm install @prozhito/lib --save`
 
 ## Usage:
 

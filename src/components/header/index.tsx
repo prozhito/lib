@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect } from "react";
-import { HeaderContent } from "../header/header";
+import React, { useEffect } from "react";
+import { HeaderContent } from "./header";
 import { getContextData } from "../../api/getServerData";
 
 export function Header() {
