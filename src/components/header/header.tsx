@@ -7,8 +7,8 @@ import styles from "./header.module.css";
 import { TLogo, TMainMenu } from "../../api/types";
 import { NEXT_PUBLIC_MEDIA_URL } from "../../api/constants";
 
-const openImg = "/images/menu-mobil-open.svg";
-const closeImg = "/images/menu-mobil-close.svg";
+import openImg from "../../assets/menu-mobil-open.svg";
+import closeImg from "../../assets/menu-mobil-close.svg";
 
 type THeaderData = {
   logos: Array<TLogo>;
