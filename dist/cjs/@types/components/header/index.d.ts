@@ -1,2 +1,2 @@
 import React from "react";
-export declare function Header(): React.JSX.Element;
+export declare function ProzhitoHeader(): React.JSX.Element;

@@ -1,5 +1,5 @@
 import React from 'react';
 
-declare function Header(): React.JSX.Element;
+declare function ProzhitoHeader(): React.JSX.Element;
 
-export { Header };
+export { ProzhitoHeader };

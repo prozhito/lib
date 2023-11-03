@@ -1,25 +1,42 @@
 import React, { FC, useState } from "react";
+import { useRouter } from "../../hooks/useRouter";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { HeaderNav } from "./headerNav";
 
 import styles from "./header.module.css";
 import { TLogo, TMainMenu } from "../../api/types";
-
 import { NEXT_PUBLIC_MEDIA_URL } from "../../api/constants";
+
+const openImg = "/images/menu-mobil-open.svg";
+const closeImg = "/images/menu-mobil-close.svg";
 
 type THeaderData = {
   logos: Array<TLogo>;
   main_menu: Array<TMainMenu>;
 };
 
-export const HeaderContent: FC<THeaderData> = ({ logos, main_menu }) => {
+export const Header: FC<THeaderData> = ({ logos, main_menu }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  const desktop = useMediaQuery("(min-width: 768px)");
+  const router = useRouter();
+
+  const btnState = menuOpen
+    ? { img: closeImg, alt: "Закрыть" }
+    : { img: openImg, alt: "Открыть" };
 
   const toggleMobileMenu = (): void => {
     setMenuOpen((prevState) => !prevState);
   };
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${
+        !desktop && menuOpen
+          ? `${styles.header} ${styles.header_theme_dark}`
+          : styles.header
+      } ${router.pathname !== "/" ? styles.header_theme_white : null}`}
+    >
       <div className={`${styles.header__container} ${styles.menu}`}>
         <div className={styles.header__links}>
           {logos.map((logo, index) => {
@@ -54,11 +71,20 @@ export const HeaderContent: FC<THeaderData> = ({ logos, main_menu }) => {
           })}
         </div>
         <HeaderNav
-          desktop={true}
+          desktop={desktop}
           open={menuOpen}
           main_menu={main_menu}
           onClose={toggleMobileMenu}
         />
+        {!desktop && (
+          <button
+            type="button"
+            className={styles.menu__button}
+            onClick={toggleMobileMenu}
+          >
+            <img alt={btnState.alt} src={btnState.img} />
+          </button>
+        )}
       </div>
     </header>
   );

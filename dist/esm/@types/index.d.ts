@@ -1,1 +1,1 @@
-export { Header } from "./components";
+export { ProzhitoHeader } from "./components";

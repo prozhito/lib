@@ -1,6 +1,6 @@
 {
   "name": "@prozhito/lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prozhito project React components UI library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

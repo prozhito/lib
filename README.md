@@ -2,15 +2,15 @@
 
 ## Installation:
 
-`npm install @prozhito/lib --save`
+`npm install https://github.com/prozhito/lib --save`
 
 ## Usage:
 
 ```tsx
-import { Header } from "@prozhito/lib";
+import { ProzhitoHeader } from "@prozhito/lib";
 
 function MyApp() {
-  return <Header />;
+  return <ProzhitoHeader />;
 }
 
 export default MyApp;

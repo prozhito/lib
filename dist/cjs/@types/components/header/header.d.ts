@@ -4,5 +4,5 @@ type THeaderData = {
     logos: Array<TLogo>;
     main_menu: Array<TMainMenu>;
 };
-export declare const HeaderContent: FC<THeaderData>;
+export declare const Header: FC<THeaderData>;
 export {};

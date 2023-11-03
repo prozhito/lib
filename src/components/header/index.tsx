@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { HeaderContent } from "./header";
+import { Header } from "./header";
 import { getContextData } from "../../api/getServerData";
 
-export function Header() {
+export function ProzhitoHeader() {
   const { data, error, isLoading } = getContextData();
 
   useEffect(() => {
@@ -12,5 +12,5 @@ export function Header() {
 
   if (!data) return <header></header>;
 
-  return <HeaderContent logos={data.logos} main_menu={data.main_menu} />;
+  return <Header logos={data.logos} main_menu={data.main_menu} />;
 }

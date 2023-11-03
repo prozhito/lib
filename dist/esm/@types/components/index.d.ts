@@ -1,1 +1,1 @@
-export { Header } from "./header";
+export { ProzhitoHeader } from "./header";
