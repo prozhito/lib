@@ -1,18 +1,18 @@
 import React, { FC } from "react";
-import { ExternalLink } from "../links/external-link";
+import { ExternalLink } from "../../links";
 
-import styles from "./headerNav.module.css";
+import styles from "./.module.css";
 
-import { TMainMenu } from "../../api/types";
+import { TMainMenu } from "../../../api/types";
 
-type THeaderNavProps = {
+type THeaderMenuProps = {
   desktop: boolean;
   open: boolean;
   main_menu: Array<TMainMenu>;
   onClose?: () => void;
 };
 
-export const HeaderNav: FC<THeaderNavProps> = ({
+export const HeaderMenu: FC<THeaderMenuProps> = ({
   desktop,
   open,
   main_menu,
@@ -33,7 +33,7 @@ export const HeaderNav: FC<THeaderNavProps> = ({
   // console.log('main_menu', main_menu)
 
   return (
-    <nav className={`${desktop ? "" : isMobileContainerStyle} header__nav`}>
+    <nav className={desktop ? "" : isMobileContainerStyle}>
       <ul className={style}>
         {main_menu.map((item, index) => {
           return (

@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 
-import styles from "./external-link.module.css";
+import styles from "./.module.css";
 
 type TExternalLinkProps = {
   url: string | null;

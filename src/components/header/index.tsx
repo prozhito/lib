@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Header } from "./header";
-import { getContextData } from "../../api/getServerData";
+import { getContextData } from "../../api";
 
 export function ProzhitoHeader() {
   const { data, error, isLoading } = getContextData();

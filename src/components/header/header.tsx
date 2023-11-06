@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
 import { useRouter } from "../../hooks/useRouter";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { HeaderNav } from "./headerNav";
+import { HeaderMenu } from "./menu";
 
-import styles from "./header.module.css";
+import styles from "./.module.css";
 import { TLogo, TMainMenu } from "../../api/types";
 import { NEXT_PUBLIC_MEDIA_URL } from "../../api/constants";
 
@@ -70,7 +70,7 @@ export const Header: FC<THeaderData> = ({ logos, main_menu }) => {
               );
           })}
         </div>
-        <HeaderNav
+        <HeaderMenu
           desktop={desktop}
           open={menuOpen}
           main_menu={main_menu}
