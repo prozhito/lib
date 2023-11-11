@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { ExternalLink } from "../../links";
+import { ExternalLink } from "../links";
 
 import styles from "./.module.css";
 
-import { TMainMenu } from "../../../api/types";
+import { TMainMenu } from "../../api/types";
 
 type THeaderMenuProps = {
   desktop: boolean;
