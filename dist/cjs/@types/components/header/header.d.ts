@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { TLogo, TMainMenu } from "../../api/types";
+import { FC } from 'react';
+import { TLogo, TMainMenu } from '../../api/types';
 type THeaderData = {
     logos: Array<TLogo>;
     main_menu: Array<TMainMenu>;
