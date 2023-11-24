@@ -24,7 +24,7 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
   // console.log('main_menu', main_menu)
 
   return (
-    <nav className={desktop ? undefined : isMobileContainerStyle}>
+    <nav className={desktop ? styles.menu__desktopContainer : isMobileContainerStyle}>
       <ul className={style}>
         {main_menu.map((item, index) => {
           return (

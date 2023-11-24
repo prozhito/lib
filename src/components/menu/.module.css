@@ -31,7 +31,7 @@
   width: 100%;
   height: 1px;
   background-color: #000;
-  bottom: 2px;
+  bottom: 0.25em;
   transform: scaleX(0);
   transition: transform 0.25s ease-in-out;
 }
@@ -66,14 +66,18 @@
   left: 0;
   height: 50px;
   width: 100%;
-  background-color: #f7f4f0;
+  background-color: inherit;
+}
+
+.menu__desktopContainer {
+  background: inherit;
 }
 
 .menu__mobileContainer {
   position: absolute;
   height: 0;
   overflow: hidden;
-  background: var(--bg-orange-light);
+  background: inherit;
   top: 50px;
   left: 0;
   width: 100%;

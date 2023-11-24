@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 import { useRouter } from '../../hooks/useRouter'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { HeaderMenu } from '../menu'
-import { UserMenu } from '../user'
+// import { UserMenu } from '../user'
 
 import styles from './.module.css'
 import { TLogo, TMainMenu } from '../../api/types'
