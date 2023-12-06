@@ -1,6 +1,6 @@
 {
   "name": "@prozhito/lib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Prozhito project React components UI library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -24,12 +24,12 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/plugin-url": "^8.0.2",
     "@types/react": "^18.2.33",
     "rollup": "^4.1.5",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-url": "^3.0.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },

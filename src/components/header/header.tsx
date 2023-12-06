@@ -10,6 +10,9 @@ import { NEXT_PUBLIC_MEDIA_URL } from '../../api/constants'
 
 import openImg from '../../assets/menu-mobil-open.svg'
 import closeImg from '../../assets/menu-mobil-close.svg'
+import prozhitoLogo from '../../assets/prozhito_logo_ru.svg'
+import euspLogo from '../../assets/eusp.svg'
+console.log(euspLogo)
 
 type THeaderData = {
   logos: Array<TLogo>
@@ -35,20 +38,12 @@ export const Header: FC<THeaderData> = ({ logos, main_menu }) => {
       }`}>
       <div className={styles.header__container}>
         <div className={styles.header__links}>
-          {logos.map((logo, index) => {
-            if (index === 0)
-              return (
-                <a href="/" className={styles.link} key={index}>
-                  <img width={300} height={200} src={NEXT_PUBLIC_MEDIA_URL + logo.icon} alt={logo.alt_text ?? 'Logo'} className={styles.header__logo} />
-                </a>
-              )
-            else
-              return (
-                <a href="https://eusp.org/" target="_blank" rel="noopener noreferrer" className={styles.link} key={index}>
-                  <img src={NEXT_PUBLIC_MEDIA_URL + logo.icon} alt={logo.alt_text ?? 'Logo'} className={styles.header__eusp} />
-                </a>
-              )
-          })}
+          <a href="https://prozhito.org/">
+            <img width={156} height={30} src={prozhitoLogo} alt="Logo" />
+          </a>
+          <a href="https://eusp.org/">
+            <img width={101.6} height={30} src={euspLogo} alt="Logo" />
+          </a>
         </div>
 
         <HeaderMenu desktop={desktop} open={menuOpen} main_menu={main_menu} onClose={toggleMobileMenu} />
