@@ -1,1 +1,1 @@
-export { getContextData } from "./getServerData";
+export { getContextData } from './get';

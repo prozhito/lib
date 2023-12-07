@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import { Header } from "./header";
-import { getContextData } from "../../api";
+import React, { useEffect, useState } from 'react'
+import { Header } from './header'
+import { getContextData } from '../../api'
+import { TMainMenu } from '../../api/types'
 
-export function ProzhitoHeader() {
-  const { data, error, isLoading } = getContextData();
+export const ProzhitoHeader = ({ main_menu }: { main_menu?: TMainMenu[] }) => {
+  const [menu, setMenu] = useState(main_menu)
 
   useEffect(() => {
-    // TODO: 500 page
-    if (!isLoading && (error || !data)) throw new Error("500");
-  }, [isLoading]);
+    if (!menu) {
+      getContextData().then(({ data, error }) => {
+        if (!error && data) setMenu(data.main_menu)
+      })
+    }
+  }, [])
 
-  if (!data) return <header></header>;
-
-  return <Header logos={data.logos} main_menu={data.main_menu} />;
+  return <Header main_menu={menu} />
 }

@@ -6,20 +6,18 @@ import { HeaderMenu } from '../menu'
 
 import styles from './.module.css'
 import { TLogo, TMainMenu } from '../../api/types'
-import { NEXT_PUBLIC_MEDIA_URL } from '../../api/constants'
 
 import openImg from '../../assets/menu-mobil-open.svg'
 import closeImg from '../../assets/menu-mobil-close.svg'
 import prozhitoLogo from '../../assets/prozhito_logo_ru.svg'
 import euspLogo from '../../assets/eusp.svg'
-console.log(euspLogo)
 
 type THeaderData = {
-  logos: Array<TLogo>
-  main_menu: Array<TMainMenu>
+  logos?: Array<TLogo>
+  main_menu?: Array<TMainMenu>
 }
 
-export const Header: FC<THeaderData> = ({ logos, main_menu }) => {
+export const Header: FC<THeaderData> = ({ main_menu = [] }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   const desktop = useMediaQuery('(min-width: 768px)')
@@ -41,7 +39,7 @@ export const Header: FC<THeaderData> = ({ logos, main_menu }) => {
           <a href="https://prozhito.org/">
             <img width={156} height={30} src={prozhitoLogo} alt="Logo" />
           </a>
-          <a href="https://eusp.org/">
+          <a href="https://eusp.org/" target="_blank">
             <img width={101.6} height={30} src={euspLogo} alt="Logo" />
           </a>
         </div>

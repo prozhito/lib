@@ -6,12 +6,16 @@
 
 ## Usage:
 
+### ProzhitoHeader
+
+[![preview](./docs/assets/header_preview.png)](#ProzhitoHeader)
+
 ```tsx
-import { ProzhitoHeader } from "@prozhito/lib";
+import { ProzhitoHeader } from '@prozhito/lib'
 
 function MyApp() {
-  return <ProzhitoHeader />;
+  return <ProzhitoHeader />
 }
 
-export default MyApp;
+export default MyApp
 ```
