@@ -1,14 +1,11 @@
 import React from 'react'
-import { useRouter } from '../../hooks/useRouter'
-// import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { HeaderMenu } from '../menu'
 import { UserMenu } from '../user'
+import { MenuButton } from '../menu/menuButton'
 
 import styles from './.module.css'
 import type { TLogo, TMainMenu } from '../../api/context/types'
 
-import openImg from '../../assets/menu-mobil-open.svg'
-import closeImg from '../../assets/menu-mobil-close.svg'
 import prozhitoLogo from '../../assets/prozhito_logo_ru.svg'
 import euspLogo from '../../assets/eusp.svg'
 
@@ -19,23 +16,8 @@ type THeaderData = {
 }
 
 export const Header = ({ main_menu = [], account = false }: THeaderData) => {
-  const menuOpen = false
-  // const [menuOpen, setMenuOpen] = React.useState<boolean>(false)
-
-  const desktop = true //useMediaQuery('(min-width: 768px)')
-  const router = useRouter()
-
-  const btnState = menuOpen ? { img: closeImg, alt: 'Закрыть' } : { img: openImg, alt: 'Открыть' }
-
-  const toggleMobileMenu = (): void => {
-    // setMenuOpen(prevState => !prevState)
-  }
-
   return (
-    <header
-      className={`${!desktop && menuOpen ? `${styles.header} ${styles.header_theme_dark}` : styles.header} ${
-        router.pathname !== '/' ? styles.header_theme_white : ''
-      }`}>
+    <header className={styles.header}>
       <div className={styles.header__container}>
         <div className={styles.header__links}>
           <a href="https://prozhito.org/">
@@ -46,13 +28,11 @@ export const Header = ({ main_menu = [], account = false }: THeaderData) => {
           </a>
         </div>
 
-        <HeaderMenu desktop={desktop} open={menuOpen} main_menu={main_menu} onClose={toggleMobileMenu} />
+        <HeaderMenu main_menu={main_menu} />
 
         <div className={styles.header__buttons}>
           {account && <UserMenu />}
-          {/*           <button className={styles.menu__button} onClick={toggleMobileMenu}>
-            <img alt={btnState.alt} src={btnState.img} />
-          </button> */}
+          <MenuButton />
         </div>
       </div>
     </header>

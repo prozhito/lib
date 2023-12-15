@@ -1,1 +1,0 @@
-export { ProzhitoHeader } from "./header";

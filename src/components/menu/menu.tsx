@@ -1,31 +1,15 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { ExternalLink } from '../links'
+import type { TMainMenu } from '../../api/context/types'
 
 import styles from './.module.css'
 
-import type { TMainMenu } from '../../api/context/types'
-
-type THeaderMenuProps = {
-  desktop: boolean
-  open: boolean
-  main_menu: Array<TMainMenu>
-  onClose?: () => void
-}
-
-export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onClose }) => {
-  const isMobileMenuStyle = open ? styles.menu__mobile : `${styles.menu__mobile} ${styles.menu__mobile_open}`
-
-  const isMobileContainerStyle = open ? `${styles.menu__mobileContainer} ${styles.menu__mobileContainer_open}` : styles.menu__mobileContainer
-
-  const style = desktop ? styles.menu__desktop : isMobileMenuStyle
-
+export const HeaderMenu = ({ main_menu }: { main_menu: TMainMenu[] }) => {
   const secondLevel = main_menu.filter(item => item.children)
 
-  // console.log('main_menu', main_menu)
-
   return (
-    <nav className={desktop ? styles.menu__desktopContainer : isMobileContainerStyle}>
-      <ul className={style}>
+    <nav className={styles.menu__container}>
+      <ul className={styles.menu}>
         {main_menu.map((item, index) => {
           return (
             <li className={styles.menu__item} key={index} /* onClick={onClose} */>
@@ -33,7 +17,7 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
                 {item.title}
               </ExternalLink>
 
-              {desktop && item.children && item.children.length > 0 && (
+              {item.children && item.children.length > 0 && (
                 <ul className={styles.menu__dropdown}>
                   {item.children.map((item, index) => {
                     return (
@@ -50,9 +34,8 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
           )
         })}
       </ul>
-      <div className={styles.menu__dropdown_bg}></div>
-      {!desktop && secondLevel.length > 0 && (
-        <ul className={`${secondLevel.length <= 3 ? style : styles.menu__mobile_secondLevel}`}>
+      {secondLevel.length > 0 && (
+        <ul className={styles.menu}>
           {secondLevel.map(item => {
             return item.children?.map((child, index) => {
               return (
@@ -66,6 +49,7 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
           })}
         </ul>
       )}
+      <div className={styles.menu__dropdown_bg}></div>
     </nav>
   )
 }

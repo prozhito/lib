@@ -1,1 +1,0 @@
-export { getContextData } from './get';

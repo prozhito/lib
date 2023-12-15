@@ -5,6 +5,7 @@ import url from '@rollup/plugin-url'
 import dts from 'rollup-plugin-dts'
 import terser from '@rollup/plugin-terser'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import preserveDirectives from 'rollup-plugin-preserve-directives'
 import postcss from 'rollup-plugin-postcss'
 import path from 'path'
 const { randomUUID } = require('node:crypto')
@@ -31,9 +32,12 @@ export default [
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        dir: 'dist/esm',
         format: 'esm',
+        exports: 'named',
         sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
     ],
     plugins: [
@@ -50,7 +54,8 @@ export default [
       commonjs(),
       url(),
       typescript({ tsconfig: './tsconfig.json' }),
-      terser(),
+      terser({ compress: { directives: false } }),
+      preserveDirectives.default({ supressPreserveModulesWarning: true }),
     ],
     external: [...Object.keys(packageJson.peerDependencies || {})],
   },

@@ -1,14 +1,11 @@
-.menu__desktop {
+.menu {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 3em;
+  column-gap: 3em;
   margin: 0;
   padding: 0;
   list-style: none;
-}
-.menu__desktop:hover ~ .menu__dropdown_bg {
-  display: block;
 }
 
 .menu__item {
@@ -34,9 +31,6 @@
 .menu__item:hover::before {
   transform: scaleX(1);
 }
-.menu__item:hover .menu__dropdown {
-  display: grid;
-}
 
 .menu__dropdown {
   position: absolute;
@@ -50,9 +44,13 @@
   z-index: 1;
   white-space: nowrap;
 }
-
 .menu__dropdown:last-of-type {
   padding-right: 0;
+}
+@media screen and (min-width: 801px) {
+  .menu__item:hover .menu__dropdown {
+    display: grid;
+  }
 }
 
 .menu__dropdown_bg {
@@ -64,54 +62,66 @@
   width: 100%;
   background-color: inherit;
 }
-
-.menu__desktopContainer {
-  background: inherit;
+@media screen and (min-width: 801px) {
+  .menu:hover ~ .menu__dropdown_bg {
+    display: block;
+  }
 }
 
-.menu__mobileContainer {
+.menu__container {
+  background-color: inherit;
+}
+
+.menu_open {
   position: absolute;
   height: 0;
   overflow: hidden;
-  background: inherit;
-  top: 50px;
+  top: 51px;
   left: 0;
   width: 100%;
-  transition: height 0.5s ease-in-out;
+  height: calc(100dvh - 51px);
 }
-
-.menu__mobileContainer_open {
-  height: calc(100vh - 50px);
-}
-
-.menu__mobile {
+.menu__container.open > .menu {
   display: flex;
-  flex-direction: column;
-  margin: 24px 12px;
-  padding: 0;
-  width: calc(100% - 24px);
 }
 
-.menu__mobile_secondLevel {
-  margin: 24px 12px;
-  column-width: 48%;
-  column-count: 2;
-  column-gap: 4%;
-  border-bottom: 1px solid var(--color30, #9e9e9e);
-}
-
-.menu__mobile {
-  border-bottom: 1px solid var(--color30, #9e9e9e);
-}
-
-@media screen and (max-width: 768px) {
-  .menu__desktop {
+@media screen and (min-width: 801px) {
+  .menu__container ul:nth-child(2) {
     display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin: 1.5rem 1rem;
+    border-bottom: 1px solid var(--color30, #9e9e9e);
   }
   .menu__item {
     padding: 0;
-    height: unset;
     width: fit-content;
-    margin-bottom: 1.75rem;
+  }
+}
+
+.menu__button {
+  display: none;
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: var(--color30, gray);
+  cursor: pointer;
+  transition: opacity 0.25s linear;
+}
+.menu__button:hover {
+  opacity: 0.65;
+}
+@media screen and (max-width: 800px) {
+  .menu__button {
+    display: block;
   }
 }

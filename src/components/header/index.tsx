@@ -6,7 +6,6 @@ import { cookies } from 'next/headers'
 import { authWithToken } from '../../api/account/actions/auth'
 
 async function getUser() {
-  console.log('getUser Server:', typeof window === 'undefined')
   const cookie = cookies()
   const [access, refresh] = [cookie.get('access')?.value, cookie.get('refresh')?.value]
   if (access || refresh) {
@@ -26,17 +25,6 @@ export const ProzhitoHeader = async ({ main_menu, account = false }: { main_menu
   const data = account ? await getUser() : { user: null, error: '' }
   main_menu = main_menu || (await getContext())
   // console.log('account:', data)
-  /*
-  const [menu, setMenu] = React.useState(main_menu)
 
-  React.useEffect(() => {
-    if (!menu) {
-      getContextData().then(({ data, error }) => {
-        if (!error && data) setMenu(data.main_menu)
-      })
-    }
-  }, [])
- */
-  // return <header></header>
   return <Header main_menu={main_menu} account={account} />
 }
