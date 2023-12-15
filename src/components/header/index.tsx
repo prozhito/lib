@@ -1,18 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Header } from './header'
-import { getContextData } from '../../api'
-import { TMainMenu } from '../../api/types'
+import { getContextData } from '../../api/context'
+import type { TMainMenu } from '../../api/context/types'
+import { cookies } from 'next/headers'
+import { authWithToken } from '../../api/account/actions/auth'
 
-export const ProzhitoHeader = ({ main_menu }: { main_menu?: TMainMenu[] }) => {
-  const [menu, setMenu] = useState(main_menu)
+async function getUser() {
+  console.log('getUser Server:', typeof window === 'undefined')
+  const cookie = cookies()
+  const [access, refresh] = [cookie.get('access')?.value, cookie.get('refresh')?.value]
+  if (access || refresh) {
+    return await authWithToken(access, refresh)
+  }
+}
 
-  useEffect(() => {
+async function getContext() {
+  return await getContextData().then(({ data, error }) => {
+    if (!error && data && data.main_menu) return data.main_menu
+    return []
+  })
+}
+
+export const ProzhitoHeader = async ({ main_menu, account = false }: { main_menu?: TMainMenu[]; account?: boolean }) => {
+  console.log('ProzhitoHeader Server:', typeof window === 'undefined')
+  const data = account ? await getUser() : { user: null, error: '' }
+  main_menu = main_menu || (await getContext())
+  // console.log('account:', data)
+  /*
+  const [menu, setMenu] = React.useState(main_menu)
+
+  React.useEffect(() => {
     if (!menu) {
       getContextData().then(({ data, error }) => {
         if (!error && data) setMenu(data.main_menu)
       })
     }
   }, [])
-
-  return <Header main_menu={menu} />
+ */
+  // return <header></header>
+  return <Header main_menu={main_menu} account={account} />
 }

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 type TExternalLinkProps = {
     url: string | null;
     children: ReactNode;

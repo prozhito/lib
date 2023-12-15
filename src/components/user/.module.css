@@ -3,7 +3,7 @@
   min-width: 26px;
   height: 26px;
   border-radius: 50%;
-  background-color: gray;
+  background-color: var(--color30, gray);
   cursor: pointer;
   transition: opacity 0.25s linear;
 }

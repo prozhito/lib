@@ -15,8 +15,11 @@ type TChild = {
     target_blank: boolean;
 };
 
-declare const ProzhitoHeader: ({ main_menu }: {
+declare const ProzhitoHeader: ({ main_menu, account }: {
     main_menu?: TMainMenu[] | undefined;
-}) => React.JSX.Element;
+    account?: boolean | undefined;
+}) => Promise<React.JSX.Element>;
 
-export { ProzhitoHeader };
+declare const StylesInject: React.FC;
+
+export { ProzhitoHeader, StylesInject };

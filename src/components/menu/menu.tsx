@@ -3,7 +3,7 @@ import { ExternalLink } from '../links'
 
 import styles from './.module.css'
 
-import { TMainMenu } from '../../api/types'
+import type { TMainMenu } from '../../api/context/types'
 
 type THeaderMenuProps = {
   desktop: boolean
@@ -28,7 +28,7 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
       <ul className={style}>
         {main_menu.map((item, index) => {
           return (
-            <li className={styles.menu__item} key={index} onClick={onClose}>
+            <li className={styles.menu__item} key={index} /* onClick={onClose} */>
               <ExternalLink url={(item.page_slug || item.url) ?? '#'} target_blank={item.target_blank}>
                 {item.title}
               </ExternalLink>
@@ -37,7 +37,7 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
                 <ul className={styles.menu__dropdown}>
                   {item.children.map((item, index) => {
                     return (
-                      <li className={styles.menu__item} key={index} onClick={onClose}>
+                      <li className={styles.menu__item} key={index} /* onClick={onClose} */>
                         <ExternalLink url={item.page_slug || item.url} target_blank={item.target_blank}>
                           {item.title}
                         </ExternalLink>
@@ -56,7 +56,7 @@ export const HeaderMenu: FC<THeaderMenuProps> = ({ desktop, open, main_menu, onC
           {secondLevel.map(item => {
             return item.children?.map((child, index) => {
               return (
-                <li className={styles.menu__item} key={index} onClick={onClose}>
+                <li className={styles.menu__item} key={index} /* onClick={onClose} */>
                   <ExternalLink url={(child.page_slug || child.url) ?? '#'} target_blank={item.target_blank}>
                     {child.title}
                   </ExternalLink>

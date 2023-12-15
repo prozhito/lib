@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { TMainMenu } from '../../api/types';
+import type { TMainMenu } from '../../api/context/types';
 type THeaderMenuProps = {
     desktop: boolean;
     open: boolean;
