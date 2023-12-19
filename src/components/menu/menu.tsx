@@ -12,16 +12,15 @@ export const HeaderMenu = ({ main_menu }: { main_menu: TMainMenu[] }) => {
       <ul className={styles.menu}>
         {main_menu.map((item, index) => {
           return (
-            <li className={styles.menu__item} key={index} /* onClick={onClose} */>
+            <li className={styles.menu__item} key={index}>
               <ExternalLink url={(item.page_slug || item.url) ?? '#'} target_blank={item.target_blank}>
                 {item.title}
               </ExternalLink>
-
               {item.children && item.children.length > 0 && (
                 <ul className={styles.menu__dropdown}>
                   {item.children.map((item, index) => {
                     return (
-                      <li className={styles.menu__item} key={index} /* onClick={onClose} */>
+                      <li className={styles.menu__item} key={index}>
                         <ExternalLink url={item.page_slug || item.url} target_blank={item.target_blank}>
                           {item.title}
                         </ExternalLink>
@@ -39,7 +38,7 @@ export const HeaderMenu = ({ main_menu }: { main_menu: TMainMenu[] }) => {
           {secondLevel.map(item => {
             return item.children?.map((child, index) => {
               return (
-                <li className={styles.menu__item} key={index} /* onClick={onClose} */>
+                <li className={styles.menu__item} key={index}>
                   <ExternalLink url={(child.page_slug || child.url) ?? '#'} target_blank={item.target_blank}>
                     {child.title}
                   </ExternalLink>
