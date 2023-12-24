@@ -17,7 +17,7 @@ type TFormLoginProps = {
   closeModal: () => void
 }
 
-export const FormLogin = ({ loading, error, user, login, logout, visible, closeModal }: TFormLoginProps) => {
+export const ModalAccount = ({ loading, error, user, login, logout, visible, closeModal }: TFormLoginProps) => {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.currentTarget)
     const data: Record<string, string> = {

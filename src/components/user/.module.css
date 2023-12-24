@@ -6,6 +6,9 @@
   background-color: var(--color30, gray);
   cursor: pointer;
   transition: opacity 0.25s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .user__menu:hover {
   opacity: 0.65;
