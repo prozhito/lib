@@ -27,7 +27,7 @@
 .modal__inner {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   row-gap: 1rem;
   padding: 1rem;
   font-size: 1rem;

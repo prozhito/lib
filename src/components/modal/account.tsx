@@ -24,7 +24,7 @@ export const ModalAccount = ({ loading, error, user, login, logout, visible, clo
       email: formData.get('email')?.toString() || '',
       password: formData.get('password')?.toString() || '',
     }
-    console.log('Sending:', data)
+    // console.log('Sending:', data)
     login(data)
     event.preventDefault()
   }
@@ -43,9 +43,7 @@ export const ModalAccount = ({ loading, error, user, login, logout, visible, clo
     if (typeof window != 'undefined') window.location.reload()
   }
 
-  const info = () => {
-    console.log(user)
-  }
+  // const info = () => console.log(user)
 
   return (
     <div className={visible ? styles.modal__outer : styles.modal__outer_hidden} onClick={handleClick}>

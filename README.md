@@ -6,7 +6,7 @@
 
 ## Usage:
 
-### `ProzhitoHeader`
+### `ProzhitoHeader` <u>client</u> example
 
 [![preview](./docs/assets/header_preview.png)](#ProzhitoHeader)
 
@@ -14,16 +14,29 @@
 - Header menu with mobile version and menu content fetcher (SSR).
 
 ```tsx
+'use client'
 import { ProzhitoHeader } from '@prozhito/lib'
 
-function MyApp() {
-  return <ProzhitoHeader />
+function Layout() {
+  const [Header, setHeader] = React.useState<React.JSX.Element | null>(null)
+
+  React.useEffect(() => {
+    ProzhitoHeader().then(header => setHeader(header))
+  }, [])
+
+  return (
+    <>
+      {Header}
+      <main></main>
+      <footer></footer>
+    </>
+  )
 }
 
-export default MyApp
+export default Layout
 ```
 
-### `ProzhitoHeader` with account
+### `ProzhitoHeader` <u>server</u> example with account
 
 [![preview](./docs/assets/header_preview_account.png)](#ProzhitoHeader)
 
@@ -34,11 +47,21 @@ export default MyApp
 - Importable `useUser` hook, that provides access to user info.
 
 ```tsx
-import { ProzhitoHeader } from '@prozhito/lib'
+import { ProzhitoHeader, StylesInject } from '@prozhito/lib'
 
-function MyApp() {
-  return <ProzhitoHeader account={true} />
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <StylesInject />
+      </head>
+      <body>
+        <ProzhitoHeader account={true} />
+        {children}
+      </body>
+    </html>
+  )
 }
 
-export default MyApp
+export default Layout
 ```
