@@ -22,11 +22,12 @@ export const useAccount = (): TAccount => {
       update()
     }
   }
+
   const [state, setState] = React.useState<TAccount>({ ...account.info(), setUser, login: account.login, logout: account.logout })
 
   const update = React.useCallback(() => {
     setState(prev => ({ ...prev, ...account.info() }))
-    console.log('account.update.loading:', account.info().loading)
+    // console.log('account.update.loading:', account.info().loading)
   }, [])
 
   React.useEffect(() => {

@@ -1,0 +1,2 @@
+import{__awaiter as r,__generator as e}from"../../../node_modules/tslib/tslib.es6.js";import{apiGetData as s}from"./get.js";import{setCookie as t,getLifespan as o}from"../utils.js";var i=function(i){return r(void 0,void 0,void 0,(function(){var r,n;return e(this,(function(e){switch(e.label){case 0:return[4,s("refresh",{refresh:i})];case 1:return(r=e.sent()).error?[2,r]:(n=r.access)?(t({access:n,expires:o(1),samesite:"lax"}),[2,{access:n}]):[2,{error:"No token"}]}}))}))};export{i as getNewToken};
+//# sourceMappingURL=refresh.js.map
