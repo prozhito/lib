@@ -13,7 +13,8 @@
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["es5", "dom", "ES2017"]
+    "lib": ["es5", "dom", "ES2017"],
+    "importHelpers": true
   },
   "include": ["src"],
   "exclude": ["dist", "node_modules", "src/**/*.test.tsx"]
