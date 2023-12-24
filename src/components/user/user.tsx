@@ -1,36 +1,47 @@
 'use client'
 
 import React from 'react'
-import { FormLogin } from '../ui'
+import { AccountConsumer } from '../../api/account'
+import { useAccount } from '../../api/account/hooks/useAccount'
+import { FormLogin } from '../modal/login'
 import { Modal } from '../modal'
+import { createPortal } from 'react-dom'
 
 import styles from './.module.css'
 import defaultUser from '../../assets/user.svg'
 
-export const UserMenu = () => {
-  const { loading, error, user, login, logout } = {
-    loading: false,
-    error: '',
-    user: null,
-    login: () => {},
-    logout: () => {},
+type TUserMenuProps = {
+  user_data?: {
+    user?: Record<string, string>
+    error?: string
   }
+}
+
+export const UserMenu = ({ user_data }: TUserMenuProps) => {
+  const [domLoaded, setDomLoaded] = React.useState(false)
+  const [loginVisible, setLoginVisible] = React.useState(false)
+  const { loading, error, user, setUser, login, logout } = useAccount()
+  console.log('loading:', loading)
+  console.log('error:', error)
+  console.log('user:', user)
+
+  React.useEffect(() => {
+    if (user_data && user_data.user) setUser(user_data.user)
+    setDomLoaded(true)
+  }, [])
 
   return (
     <>
-      <div
-        className={styles.user__menu}
-        onClick={() =>
-          Modal.Show(
-            <>
-              <h1>Sign in</h1>
-              <FormLogin {...{ loading, error, login }} />
-            </>
-          )
-        }>
+      <div className={styles.user__menu} onClick={() => setLoginVisible(true)}>
         <img src={defaultUser} />
       </div>
-      <Modal />
+
+      {typeof window !== 'undefined' &&
+        domLoaded &&
+        createPortal(
+          <FormLogin {...{ loading, error, user, login, logout, visible: loginVisible, closeModal: () => setLoginVisible(false) }} />,
+          document.body
+        )}
     </>
   )
 }

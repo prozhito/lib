@@ -22,9 +22,9 @@ async function getContext() {
 
 export const ProzhitoHeader = async ({ main_menu, account = false }: { main_menu?: TMainMenu[]; account?: boolean }) => {
   console.log('ProzhitoHeader Server:', typeof window === 'undefined')
-  const data = account ? await getUser() : { user: null, error: '' }
+  const data = account ? await getUser() : { user: undefined, error: '' }
   main_menu = main_menu || (await getContext())
   // console.log('account:', data)
 
-  return <Header main_menu={main_menu} account={account} />
+  return <Header main_menu={main_menu} account={account} user_data={data} />
 }

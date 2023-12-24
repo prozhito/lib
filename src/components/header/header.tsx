@@ -13,9 +13,13 @@ type THeaderData = {
   logos?: Array<TLogo>
   main_menu?: Array<TMainMenu>
   account?: boolean
+  user_data?: {
+    user?: Record<string, string>
+    error?: string
+  }
 }
 
-export const Header = ({ main_menu = [], account = false }: THeaderData) => {
+export const Header = ({ user_data, main_menu = [], account = false }: THeaderData) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -31,7 +35,7 @@ export const Header = ({ main_menu = [], account = false }: THeaderData) => {
         <HeaderMenu main_menu={main_menu} />
 
         <div className={styles.header__buttons}>
-          {account && <UserMenu />}
+          {account && <UserMenu user_data={user_data} />}
           <MenuButton />
         </div>
       </div>

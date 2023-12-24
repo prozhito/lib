@@ -5,24 +5,26 @@ import styles from './.module.css'
 
 import closeImg from '../../assets/close.svg'
 
-type TModal = () => React.JSX.Element
+type TModal = ({ children }: { children?: React.ReactNode }) => React.JSX.Element
 interface IModal extends TModal {
-  Show: (children: React.ReactNode) => void
+  Show: (children?: React.ReactNode) => void
 }
 type TState = { visible: boolean; children: React.ReactNode | null }
 
 export const Modal: IModal = (() => {
   const func: { [k in string | symbol]: React.Dispatch<React.SetStateAction<TState>> } = {}
 
-  const modal = () => {
-    const [state, setState] = React.useState<TState>({ visible: false, children: null })
+  const modal = ({ children }: { children?: React.ReactNode }) => {
+    const [state, setState] = React.useState<TState>({ visible: false, children })
     func.setState = setState
 
     const handleClick = (event: React.MouseEvent) => {
-      event.preventDefault()
       if (!state.visible) return
       const { target, currentTarget } = event
-      if (target === currentTarget) closeModal()
+      if (target === currentTarget) {
+        event.preventDefault()
+        closeModal()
+      }
     }
 
     const closeModal = () => setState(prev => ({ ...prev, visible: false }))
@@ -39,8 +41,9 @@ export const Modal: IModal = (() => {
     )
   }
 
-  modal.Show = (children: React.ReactNode) => {
-    func.setState({ visible: true, children })
+  modal.Show = (children?: React.ReactNode) => {
+    if (children) func.setState({ visible: true, children })
+    else func.setState(prev => ({ ...prev, visible: true }))
   }
 
   return modal
