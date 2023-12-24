@@ -1,0 +1,2 @@
+import e from"react";import a from"./.module.css.js";var r=function(r){var t=r.name,m=r.type,n=r.placeholder,o=void 0===n?"":n;return e.createElement("div",{className:a.form__input_container},e.createElement("input",{className:a.form__input,type:m,name:t,id:"form_".concat(t),placeholder:"",minLength:8,maxLength:28,required:!0}),e.createElement("label",{className:a.form__input_label,htmlFor:"form_".concat(t)},o),e.createElement("span",{className:a.form__valid},"✔"))};export{r as FormInput};
+//# sourceMappingURL=formInput.js.map
