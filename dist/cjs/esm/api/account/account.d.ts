@@ -3,9 +3,10 @@ export declare class Account {
     private _user;
     private _loading;
     private _error;
-    static _updateCallback: (() => void) | null;
+    static _updateCallback: (() => void)[];
     constructor(updateCallback?: () => void);
     set user(data: Record<string, string>);
+    private emitUpdate;
     auth(access?: string, refresh?: string): Promise<{
         user?: Record<string, string> | undefined;
         error?: string | undefined;

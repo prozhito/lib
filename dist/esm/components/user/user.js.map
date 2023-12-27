@@ -1,1 +1,1 @@
-{"version":3,"file":"user.js","sources":[],"sourcesContent":[],"names":[],"mappings":";"}
+{"version":3,"file":"user.js","sources":["../../../../../src/components/user/user.tsx"],"sourcesContent":[null],"names":["User","React","createElement","UserData"],"mappings":"8DAGa,IAAAA,EAAO,WAClB,OAAOC,EAAAC,cAACC,EAAQ,KAClB"}

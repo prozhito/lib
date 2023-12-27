@@ -6,10 +6,10 @@ export class Account {
   private _user: Record<string, string> | null = null
   private _loading = false
   private _error = ''
-  static _updateCallback: (() => void) | null = null
+  static _updateCallback: (() => void)[] = []
 
   constructor(updateCallback?: () => void) {
-    if (updateCallback && !Account._updateCallback) Account._updateCallback = updateCallback
+    if (updateCallback) Account._updateCallback.push(updateCallback)
     if (Account._instance) return Account._instance
     Account._instance = this
 
@@ -23,18 +23,24 @@ export class Account {
     this._user = { ...data }
   }
 
+  private emitUpdate() {
+    Account._updateCallback.forEach(callback => {
+      if (callback) callback()
+    })
+  }
+
   public async auth(access: string = '', refresh: string = '') {
     this._loading = true
     this._error = ''
     this._user = null
-    if (Account._updateCallback) Account._updateCallback()
+    this.emitUpdate()
 
     return authWithToken(access, refresh).then(res => {
       // console.log(res)
       if (!res || !res.error) this._user = { ...res.user }
       else this._error = res.error
       this._loading = false
-      if (Account._updateCallback) Account._updateCallback()
+      this.emitUpdate()
       return res
     })
   }
@@ -43,14 +49,14 @@ export class Account {
     this._loading = true
     this._error = ''
     this._user = null
-    if (Account._updateCallback) Account._updateCallback()
+    this.emitUpdate()
 
     authWithCredentials(data).then(res => {
       // console.log(res)
       if (!res || !res.error) this._user = { ...res.user }
       else this._error = res.error
       this._loading = false
-      if (Account._updateCallback) Account._updateCallback()
+      this.emitUpdate()
     })
   }
 
@@ -62,7 +68,7 @@ export class Account {
     }
     this._error = ''
     this._user = null
-    if (Account._updateCallback) Account._updateCallback()
+    this.emitUpdate()
   }
 
   public info() {

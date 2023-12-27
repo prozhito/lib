@@ -1,3 +1,1 @@
-type TUser = Record<string, string>;
-export declare const useUser: () => TUser | null;
-export {};
+export declare const useUser: () => Record<string, string> | null;

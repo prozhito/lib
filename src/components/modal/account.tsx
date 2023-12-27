@@ -67,9 +67,9 @@ export const ModalAccount = ({ loading, error, user, login, logout, visible, clo
             <>
               <h1>User info</h1>
               <div className={styles.user__info_container} style={{ width: '25rem' }}>
-                {Object.entries(user).map(([key, val]) => (
+                {Object.keys(user).map(key => (
                   <p key={key}>
-                    {key}: {val}
+                    {key}: {user[key]}
                   </p>
                 ))}
               </div>

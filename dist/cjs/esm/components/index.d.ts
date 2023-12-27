@@ -1,1 +1,2 @@
-export { ProzhitoHeader } from "./header";
+export { ProzhitoHeader } from './header';
+export { User } from './user';

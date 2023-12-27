@@ -1,18 +1,16 @@
 import React from 'react'
 import { Account } from '../account'
 
-type TUser = Record<string, string>
-
 export const useUser = () => {
-  const account = React.useMemo(() => new Account(), [])
-
-  const [state, setState] = React.useState<TUser | null>(account.info().user)
-
-  const update = React.useCallback(() => setState(account.info().user), [])
+  const [user, setUser] = React.useState<Record<string, string> | null>(null)
 
   React.useEffect(() => {
-    new Account(update)
+    const account = new Account(() => {
+      setUser(new Account().info().user)
+      console.log('update')
+    })
+    setUser(account.info().user)
   }, [])
 
-  return state
+  return user
 }
