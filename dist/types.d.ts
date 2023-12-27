@@ -22,6 +22,10 @@ declare const ProzhitoHeader: ({ main_menu, account }: {
 
 declare const User: () => React.JSX.Element;
 
+declare const LittleSpinner: ({ size }: {
+    size?: number | undefined;
+}) => React.JSX.Element;
+
 declare const StylesInject: React.FC;
 
-export { ProzhitoHeader, StylesInject, User };
+export { LittleSpinner, ProzhitoHeader, StylesInject, User };

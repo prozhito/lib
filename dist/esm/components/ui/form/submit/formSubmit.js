@@ -1,2 +1,2 @@
-import e from"react";import r from"./.module.css.js";var t=function(t){var m=t.children,o=t.disabled;return e.createElement("button",{className:r.form__submit,type:"submit",disabled:o},o?"Loading...":m)};export{t as FormSubmit};
+import e from"react";import{LittleSpinner as r}from"../../spinner/spinner26.js";import t from"./.module.css.js";var n=function(n){var m=n.children,l=n.disabled;return e.createElement("button",{className:t.form__submit,type:"submit",disabled:l},l?e.createElement(e.Fragment,null,e.createElement(r,null),e.createElement("span",null,"Loading...")):m)};export{n as FormSubmit};
 //# sourceMappingURL=formSubmit.js.map

@@ -48,7 +48,17 @@
 .modal__close:hover {
   opacity: 0.6;
 }
-.modal__close img {
+.modal__close svg {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.form__login {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form__login p {
+  margin-left: 1rem;
 }

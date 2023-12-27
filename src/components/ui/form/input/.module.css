@@ -20,12 +20,10 @@
   margin-top: 1rem;
   padding: 0;
   color: inherit;
-  background-color: inherit;
   -webkit-text-fill-color: var(--color100);
+  background-color: inherit;
 }
-.form__input:autofill {
-  transition: background-color 5000s ease-in-out 0s;
-}
+
 .form__input:valid ~ .form__valid {
   display: block;
 }

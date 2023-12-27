@@ -5,8 +5,6 @@ import { FormInput, FormSubmit } from '../ui/form'
 import { Button } from '../ui'
 import styles from './.module.css'
 
-import closeImg from '../../assets/close.svg'
-
 type TFormLoginProps = {
   loading: boolean
   error: string
@@ -49,13 +47,16 @@ export const ModalAccount = ({ loading, error, user, login, logout, visible, clo
     <div className={visible ? styles.modal__outer : styles.modal__outer_hidden} onClick={handleClick}>
       <div className={styles.modal__wrapper}>
         <div className={styles.modal__close} onClick={closeModal}>
-          <img src={closeImg} alt={'close'} />
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+            <line stroke="currentColor" x1="3" y1="3" x2="15" y2="15" />
+            <line stroke="currentColor" x1="3" y1="15" x2="15" y2="3" />
+          </svg>
         </div>
         <div className={styles.modal__inner}>
           {!user && (
             <>
               <h1>Sign in</h1>
-              <form onSubmit={submitHandler} style={{ width: '25rem', textAlign: 'center' }}>
+              <form onSubmit={submitHandler} className={styles.form__login}>
                 <FormInput type="email" name="email" placeholder={'email'} />
                 <FormInput type="password" name="password" placeholder={'password'} />
                 {error && <p>Error: {error}</p>}
