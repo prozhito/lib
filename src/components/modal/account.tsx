@@ -67,7 +67,7 @@ export const ModalAccount = ({ loading, error, user, login, logout, visible, clo
           {user && (
             <>
               <h1>User info</h1>
-              <div className={styles.user__info_container} style={{ width: '25rem' }}>
+              <div className={styles.user__info_container}>
                 {Object.keys(user).map(key => (
                   <p key={key}>
                     {key}: {user[key]}

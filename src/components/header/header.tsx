@@ -24,11 +24,11 @@ export const Header = ({ user_data, main_menu = [], account = false }: THeaderDa
     <header className={styles.header}>
       <div className={styles.header__container}>
         <div className={styles.header__links}>
-          <a href="https://prozhito.org/">
-            <img width={156} height={30} src={prozhitoLogo} alt="Logo" />
+          <a href="/">
+            <img src={prozhitoLogo} alt="Logo" />
           </a>
           <a href="https://eusp.org/" target="_blank">
-            <img width={101.6} height={30} src={euspLogo} alt="Logo" />
+            <img src={euspLogo} alt="Logo" />
           </a>
         </div>
 

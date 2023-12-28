@@ -1,8 +1,11 @@
 import React from 'react'
-import { ExternalLink } from '../links'
 import type { TMainMenu } from '../../api/context/types'
 
 import styles from './.module.css'
+
+function checkPath(url: string | null) {
+  return !url ? '#' : url.startsWith('http') ? url : `https://prozhito.org/page/${url}`
+}
 
 export const HeaderMenu = ({ main_menu }: { main_menu: TMainMenu[] }) => {
   const secondLevel = main_menu.filter(item => item.children)
@@ -13,17 +16,23 @@ export const HeaderMenu = ({ main_menu }: { main_menu: TMainMenu[] }) => {
         {main_menu.map((item, index) => {
           return (
             <li className={styles.menu__item} key={index}>
-              <ExternalLink url={(item.page_slug || item.url) ?? '#'} target_blank={item.target_blank}>
+              <a
+                href={checkPath(item.page_slug || item.url)}
+                target={item.target_blank ? '_blank' : '_self'}
+                rel={item.target_blank ? 'noopener noreferrer' : undefined}>
                 {item.title}
-              </ExternalLink>
+              </a>
               {item.children && item.children.length > 0 && (
                 <ul className={styles.menu__dropdown}>
                   {item.children.map((item, index) => {
                     return (
                       <li className={styles.menu__item} key={index}>
-                        <ExternalLink url={item.page_slug || item.url} target_blank={item.target_blank}>
+                        <a
+                          href={checkPath(item.page_slug || item.url)}
+                          target={item.target_blank ? '_blank' : '_self'}
+                          rel={item.target_blank ? 'noopener noreferrer' : undefined}>
                           {item.title}
-                        </ExternalLink>
+                        </a>
                       </li>
                     )
                   })}
@@ -39,9 +48,12 @@ export const HeaderMenu = ({ main_menu }: { main_menu: TMainMenu[] }) => {
             return item.children?.map((child, index) => {
               return (
                 <li className={styles.menu__item} key={index}>
-                  <ExternalLink url={(child.page_slug || child.url) ?? '#'} target_blank={item.target_blank}>
+                  <a
+                    href={checkPath(child.page_slug || child.url)}
+                    target={item.target_blank ? '_blank' : '_self'}
+                    rel={item.target_blank ? 'noopener noreferrer' : undefined}>
                     {child.title}
-                  </ExternalLink>
+                  </a>
                 </li>
               )
             })

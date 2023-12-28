@@ -1,7 +1,7 @@
 .header {
   max-width: 100dvw;
   position: relative;
-  background-color: var(--color15, #f7f4f0);
+  background-color: var(--color00, #fff);
   font-family: var(--font-family-pt-sans, 'PT Sans', Arial, sans-serif);
   font-size: 20px;
   z-index: 9;
@@ -34,7 +34,6 @@
   height: 50px;
   display: flex;
   align-items: center;
-  column-gap: 3rem;
   border-bottom: 1px var(--color30, #e7e4de) solid;
   margin: 0 auto;
   color: var(--color100, #323232);
@@ -43,11 +42,22 @@
 
 .header__buttons {
   display: flex;
-  gap: 20px;
 }
 
 .header__links {
   display: flex;
-  gap: 20px;
+  max-height: 30px;
+  max-width: 277.6px;
+  justify-content: space-between;
   margin-right: auto;
+}
+.header__links img {
+  height: 100%;
+  width: 100%;
+}
+.header__links a:nth-child(1) {
+  flex-basis: 156px;
+}
+.header__links a:nth-child(2) {
+  flex-basis: 101.6px;
 }

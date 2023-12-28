@@ -1,2 +1,0 @@
-import e from"react";import r from"./.module.css.js";var a=function(a){var t=a.url,n=a.children,c=a.className,l=void 0===c?"":c,o=a.target_blank,s=void 0===o||o;return null===t?null:t.startsWith("http")?e.createElement("a",{href:t,className:"".concat(r.link," ").concat(l),target:s?"_blank":"_self",rel:"noopener noreferrer"},n):e.createElement("a",{href:"/page/".concat(t),className:"".concat(r.link," ").concat(l)},n)};export{a as ExternalLink};
-//# sourceMappingURL=external-link.js.map
