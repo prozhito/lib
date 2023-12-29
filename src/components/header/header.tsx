@@ -4,22 +4,17 @@ import { UserMenu } from '../user'
 import { MenuButton } from '../menu/menuButton'
 
 import styles from './.module.css'
-import type { TLogo, TMainMenu } from '../../api/context/types'
+import type { TMainMenu } from '../../api/context/types'
 
 import prozhitoLogo from '../../assets/prozhito_logo_ru.svg'
-import euspLogo from '../../assets/eusp.svg'
+import euspLogo from '../../assets/eusp_logo_ru.svg'
 
 type THeaderData = {
-  logos?: Array<TLogo>
   main_menu?: Array<TMainMenu>
   account?: boolean
-  user_data?: {
-    user?: Record<string, string>
-    error?: string
-  }
 }
 
-export const Header = ({ user_data, main_menu = [], account = false }: THeaderData) => {
+export const Header = ({ main_menu = [], account = false }: THeaderData) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -35,7 +30,7 @@ export const Header = ({ user_data, main_menu = [], account = false }: THeaderDa
         <HeaderMenu main_menu={main_menu} />
 
         <div className={styles.header__buttons}>
-          {account && <UserMenu user_data={user_data} />}
+          {account && <UserMenu />}
           <MenuButton />
         </div>
       </div>

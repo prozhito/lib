@@ -19,7 +19,7 @@ type TUserMenuProps = {
   }
 }
 
-export const UserMenu = ({ user_data }: TUserMenuProps) => {
+export const Menu = ({ user_data }: TUserMenuProps) => {
   const [domLoaded, setDomLoaded] = React.useState(false)
   const [modalVisible, setModalVisible] = React.useState(false)
   const { loading, error, user, setUser, login, logout } = useAccount()

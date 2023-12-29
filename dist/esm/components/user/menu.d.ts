@@ -5,5 +5,5 @@ type TUserMenuProps = {
         error?: string;
     };
 };
-export declare const UserMenu: ({ user_data }: TUserMenuProps) => React.JSX.Element;
+export declare const Menu: ({ user_data }: TUserMenuProps) => React.JSX.Element;
 export {};
