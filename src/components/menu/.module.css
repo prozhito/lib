@@ -60,7 +60,7 @@
   display: none;
   position: absolute;
   top: 51px;
-  left: 1rem;
+  left: auto;
   height: 49px;
   width: 100%;
   max-width: calc(min(1400px, 100% - 2rem));
@@ -68,7 +68,7 @@
   border-bottom: 1px var(--color30, #e7e4de) solid;
 }
 @media screen and (min-width: 801px) {
-  .menu:hover ~ .menu__dropdown_bg {
+  .menu__container:hover ~ .menu__dropdown_bg {
     display: block;
   }
 }
@@ -80,8 +80,7 @@
 
 .menu_open {
   position: absolute;
-  height: 0;
-  overflow: hidden;
+  overflow-y: auto;
   top: 51px;
   left: 0;
   width: 100%;
